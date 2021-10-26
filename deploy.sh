@@ -2,12 +2,12 @@
 
 echo "start deploying"
 
-echo "stop old container"
+echo "[1/2] stop old app"
+sudo docker-compose down
 
-echo "remove old container"
+echo "[2/2] deploy new app"
+sudo docker-compose build
+sudo docker-compose up -d
 
-echo "remove old images"
-
-echo "build new images"
-
-echo "run new images"
+echo "[3/3] remove dangling images"
+printf "y" | sudo docker image prune
