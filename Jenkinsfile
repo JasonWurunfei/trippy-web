@@ -11,6 +11,10 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                sh """
+                    chmod +x deploy.sh
+                    sudo ./deploy.sh
+                """
             }
         }
     }
